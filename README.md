@@ -1,3 +1,31 @@
+## Cara running
+- Download atau clone repository ini
+``
+  git clone https://github.com/dirhamtriyadi/farhan-nurkholis.git
+``
+- Lalu buka folder project ini
+- Salin file `.env.example` dan ubah namanya menjadi `.env`
+- Install dependensi dengan perintah composer install
+``
+  composer install
+``
+- Jalankan perintah artisan key generate untuk meng generate key aplikasi yang ada di file .env
+``
+  php artisan key:generate
+``
+- Jalankan perintah artisan migrate untuk membuat database otomatis
+``
+  php artisan migrate
+``
+- Jalankan perintah artisan db seed untuk membuat isi database otomatis
+``
+  php artisan db:seed
+``
+- Terakhir jalankan aplikasi dengan perintah artisan serve
+``
+  php artisan serve
+``
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
