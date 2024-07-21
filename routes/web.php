@@ -100,4 +100,5 @@ Route::group(['middleware' => ['auth', 'permission:barang-keluar.delete']], func
 // Route for laporan management
 Route::group(['middleware' => ['auth', 'permission:laporan.list']], function () {
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::post('laporan', [LaporanController::class, 'generate'])->name('laporan.generate');
 });
