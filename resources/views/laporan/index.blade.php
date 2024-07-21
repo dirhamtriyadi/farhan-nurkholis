@@ -79,7 +79,13 @@
                                 </form>
                             </div>
                             <div class="col-md-6 align-content-center text-right">
-                                <a href="#" class="btn btn-sm btn-success">Print</a>
+                                {{-- <a href="{{ route('laporan.generate') }}" class="btn btn-sm btn-success">Print</a> --}}
+                                <form action="{{ route('laporan.generate') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="start_date" value="{{ $start_date }}">
+                                    <input type="hidden" name="end_date" value="{{ $end_date }}">
+                                    <button type="submit" class="btn btn-sm btn-success">Print</button>
+                                </form>
                             </div>
                         </div>
                     </div>

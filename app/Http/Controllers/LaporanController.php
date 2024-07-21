@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BarangMasuk;
 use App\Models\BarangKeluar;
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -91,5 +93,13 @@ class LaporanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Generate data to Excel.
+     */
+    public function generate(Request $request)
+    {
+        return (new LaporanExport($request->start_date, $request->end_date))->download('laporan-'.date('Y-m-d').'.xlsx');
     }
 }
