@@ -9,8 +9,9 @@ use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\LaporanController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    // return view('welcome');
+    return view('dashboard.index');
+})->name('home')->middleware('auth');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -21,7 +22,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 // Route::resource('stock-barang', StockBarangController::class);
 // Route::resource('barang-masuk', BarangMasukController::class);
