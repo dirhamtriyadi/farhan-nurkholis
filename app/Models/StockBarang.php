@@ -21,6 +21,8 @@ class StockBarang extends Model
         'satuan',
         'kuantitas',
         'keterangan',
+        'created_at',
+        'updated_at',
     ];
 
     public function createdBy()

@@ -6,12 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StockBarangController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('dashboard.index');
-})->name('home')->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -20,9 +18,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard/chart', [DashboardController::class, 'getChart'])->name('dashboard.chart')->middleware('auth');
 
 // Route::resource('stock-barang', StockBarangController::class);
 // Route::resource('barang-masuk', BarangMasukController::class);
