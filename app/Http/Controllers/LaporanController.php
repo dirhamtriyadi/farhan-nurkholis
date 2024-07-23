@@ -24,8 +24,9 @@ class LaporanController extends Controller
         } else {
             $start_date = date('Y-m-01');
             $end_date = date('Y-m-d');
-            $data['barang_masuk'] = BarangMasuk::with('stockBarang', 'createdBy', 'updatedBy')->get();
-            $data['barang_keluar'] = BarangKeluar::with('stockBarang', 'createdBy', 'updatedBy')->get();
+
+            $data['barang_masuk'] = BarangMasuk::with('stockBarang', 'createdBy', 'updatedBy')->whereBetween('tanggal', [$start_date, $end_date])->get();
+            $data['barang_keluar'] = BarangKeluar::with('stockBarang', 'createdBy', 'updatedBy')->whereBetween('tanggal', [$start_date, $end_date])->get();
         }
 
         $data['merge'] = collect();
